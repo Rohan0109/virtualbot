@@ -117,7 +117,5 @@ flutter_icons:
 assets:
   - assets/title.png
   - assets/lf30_editor_myijhmyf.json
-flutter_native_splash:
-  color: "#FFFFFF"
-  image: assets/api.png
+
 

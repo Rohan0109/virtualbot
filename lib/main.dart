@@ -136,7 +136,7 @@ class LoginPage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16, 16, 0, 0),
               child: Text(
-                'APVA',
+                'HAIVA',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyText1.override(
                   fontFamily: 'Noto Serif',
@@ -151,7 +151,7 @@ class LoginPage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20, 0, 100, 0),
               child: Text(
-                'Hey  I am apiplatform virtual developer',
+                'Hey  I am Hyper Automation Intelligent Virtual Agent',
                 textAlign: TextAlign.start,
                 style: FlutterFlowTheme.of(context).title3.override(
                   fontFamily: 'Poppins',
