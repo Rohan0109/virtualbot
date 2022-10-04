@@ -141,7 +141,7 @@ class LoginPage extends StatelessWidget {
                 style: FlutterFlowTheme.of(context).bodyText1.override(
                   fontFamily: 'Noto Serif',
                   color: Color(0xFFF2622E),
-                  fontSize: 60,
+                  fontSize: 70,
                 ),
               ),
             ),
@@ -149,7 +149,7 @@ class LoginPage extends StatelessWidget {
           Align(
             alignment: AlignmentDirectional(-1, 0),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 100, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 10, 0),
               child: Text(
                 'Hey  I am Hyper Automation Intelligent Virtual Agent',
                 textAlign: TextAlign.start,
@@ -173,11 +173,17 @@ class LoginPage extends StatelessWidget {
                 children: [
                   Align(
                     alignment: AlignmentDirectional(0.1, 0.1),
+
                     child: Image.network(
                       ( 'https://apiplatform-io.herokuapp.com/assets/images/service/Student.png'),
                       width: 500,
                       height: 500,
                       fit: BoxFit.scaleDown,
+                loadingBuilder:  (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return CircularProgressIndicator(color:Color(0xFFF2622E));
+                },
+
                     ),
                   ),
                   Container(
@@ -196,6 +202,7 @@ class LoginPage extends StatelessWidget {
                               buildConversation();
                             },
                             text: '   Get Started',
+
                             options: FFButtonOptions(
                               elevation: 0,
                               height: 40,
