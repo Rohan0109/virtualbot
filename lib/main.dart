@@ -1,15 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-
 import 'package:kommunicate_flutter/kommunicate_flutter.dart';
-import 'flutter_flow/flutter_flow_theme.dart';
-import 'flutter_flow/flutter_flow_widgets.dart';
-
-
-
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 
 import 'AppConfig.dart';
+import 'flutter_flow/flutter_flow_theme.dart';
+import 'flutter_flow/flutter_flow_widgets.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,10 +31,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-
         backgroundColor: Color(0xFF191B22),
-        body:
-        LoginPage(),
+        body: LoginPage(),
       ),
     );
   }
@@ -48,7 +42,7 @@ class _MyAppState extends State<MyApp> {
 class LoginPage extends StatelessWidget {
   TextEditingController userId = new TextEditingController();
   TextEditingController password = new TextEditingController();
-
+  PageController? pageViewController;
 /*  void loginUser(context) {
     dynamic user = {
       'userId':"user",
@@ -79,8 +73,10 @@ class LoginPage extends StatelessWidget {
   }
 */
   void buildConversation() {
-    dynamic conversationObject = {'appId': AppConfig.APP_ID,
-      'isSingleConversation': false};
+    dynamic conversationObject = {
+      'appId': AppConfig.APP_ID,
+      'isSingleConversation': false
+    };
 
     KommunicateFlutterPlugin.buildConversation(conversationObject)
         .then((result) {
@@ -109,87 +105,181 @@ class LoginPage extends StatelessWidget {
     }
   }
 */
+
   @override
   Widget build(BuildContext context) {
-
-  /*  try {
-      KommunicateFlutterPlugin.isLoggedIn().then((value) {
-        print("Logged in : " + value.toString());
-        if (value) {
-          Navigator.pop(context);
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePage()));
-        }
-      });
-    } on Exception catch (e) {
-      print("isLogged in error : " + e.toString());
-    }*/
-
-    return SingleChildScrollView(
-
-      child:SafeArea(
-        child:Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Align(
-            alignment: AlignmentDirectional(-1, 0),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 16, 0, 0),
-              child: Text(
-                'HAIVA',
-                textAlign: TextAlign.center,
-                style: FlutterFlowTheme.of(context).bodyText1.override(
-                  fontFamily: 'Noto Serif',
-                  color: Color(0xFFF2622E),
-                  fontSize: 70,
-                ),
-              ),
-            ),
-          ),
-          Align(
-            alignment: AlignmentDirectional(-1, 0),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 10, 0),
-              child: Text(
-                'Hey  I am Hyper Automation Intelligent Virtual Agent',
-                textAlign: TextAlign.start,
-                style: FlutterFlowTheme.of(context).title3.override(
-                  fontFamily: 'Poppins',
-                  color:
-                  FlutterFlowTheme.of(context).secondaryBackground,
-                  fontSize: 21,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ),
-          Align(
-            alignment: AlignmentDirectional(0, -0.05),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Align(
-                    alignment: AlignmentDirectional(0.1, 0.1),
-
-                    child: Image.network(
-                      ( 'https://apiplatform-io.herokuapp.com/assets/images/service/Student.png'),
-                      width: 500,
-                      height: 500,
-                      fit: BoxFit.scaleDown,
-                loadingBuilder:  (context, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return CircularProgressIndicator(color:Color(0xFFF2622E));
-                },
-
-                    ),
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(25, 27, 34, 100),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(6, 0, 6, 0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                        child: Text(
+                          'HAIVA',
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Merriweather',
+                                    color: Color(0xFFF2622E),
+                                    fontSize: 60,
+                                  ),
+                        ),
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                            child: Text(
+                              'V1',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Merriweather',
+                                    color: Color(0xFFF2622E),
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  Container(
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 16),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Hyper Automation Intelligent Virtual Agent',
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Merriweather',
+                                    color: Color(0xFFF2622E),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          height: 400,
+                          child: Stack(
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                                child: PageView(
+                                  controller: pageViewController ??=
+                                      PageController(initialPage: 0),
+                                  scrollDirection: Axis.horizontal,
+                                  children: [
+                                    Image.network(
+                                      'https://i.postimg.cc/0NfPC2Bz/Student-removebg-preview.png',
+                                      fit: BoxFit.contain,
+                                    ),
+                                    Image.network(
+                                      'https://apiplatform.io/assets/images/home/Dev.png',
+                                      fit: BoxFit.contain,
+                                    ),
+                                    Image.network(
+                                      'https://apiplatform.io/assets/images/home/Product.png',
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 1),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 10),
+                                  child:
+                                      smooth_page_indicator.SmoothPageIndicator(
+                                    controller: pageViewController ??=
+                                        PageController(initialPage: 0),
+                                    count: 3,
+                                    axisDirection: Axis.horizontal,
+                                    onDotClicked: (i) {
+                                      pageViewController!.animateToPage(
+                                        i,
+                                        duration: Duration(milliseconds: 500),
+                                        curve: Curves.ease,
+                                      );
+                                    },
+                                    effect: smooth_page_indicator.SlideEffect(
+                                      spacing: 14,
+                                      radius: 64,
+                                      dotWidth: 16,
+                                      dotHeight: 5,
+                                      dotColor: Color(0xFF9E9E9E),
+                                      activeDotColor: Color(0xFFF2622E),
+                                      paintStyle: PaintingStyle.fill,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Hey ✌️I am HAIVA your Virtual Assistant !',
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Merriweather',
+                                color:
+                                    FlutterFlowTheme.of(context).primaryBtnText,
+                                fontSize: 20,
+                              ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                  child: Container(
                     decoration: BoxDecoration(
                       color: Color(0xFFF2622E),
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(6),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -202,7 +292,6 @@ class LoginPage extends StatelessWidget {
                               buildConversation();
                             },
                             text: '   Get Started',
-
                             options: FFButtonOptions(
                               elevation: 0,
                               height: 40,
@@ -210,15 +299,15 @@ class LoginPage extends StatelessWidget {
                               textStyle: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1,
                               ),
-                              borderRadius: 10,
+                              borderRadius: 6,
                             ),
                           ),
                         ),
@@ -230,14 +319,20 @@ class LoginPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
       ),
     );
   }
 }
+
 //buildConversationWithPreChat(context);
+
+/*
+button
+
+
+ */
